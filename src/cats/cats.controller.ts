@@ -14,8 +14,8 @@ export class CatsController {
   //   return 'This action returns all cats';
   // }
   @Get(':id')
-  findOne(@Param() params): string {
-    console.log(params.id);
-    return `This action returns a #${params.id} cat`;
+  findOne(@Param('id') id: string): string {
+    console.log(id);
+    return `This action returns a #${id} cat`;
   }
 }
