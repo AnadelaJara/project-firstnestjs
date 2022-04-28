@@ -9,7 +9,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CreateCatDto, ListAllEntries, UpdateCatDto } from './create-cat.dto';
-// import { Response } from '@nestjs/common';
+import { Response } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
 
