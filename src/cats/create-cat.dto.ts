@@ -3,11 +3,3 @@ export class CreateCatDto {
   age: number;
   breed: string;
 }
-
-export class ListAllEntries {
-  limit: number;
-}
-
-export class UpdateCatDto {
-  id: number;
-}

@@ -8,7 +8,10 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { CreateCatDto, ListAllEntries, UpdateCatDto } from './create-cat.dto';
+import { CreateCatDto } from './create-cat.dto';
+import { ListAllEntries } from './list-cat.dto';
+import { UpdateCatDto } from './update-cat.dto';
+
 import { Response } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from './interfaces/cat.interface';
