@@ -8,6 +8,6 @@ export class ListAllEntries {
   limit: number;
 }
 
-// export UpdateCatDto {
-//   id: number;
-// }
+export class UpdateCatDto {
+  id: number;
+}
