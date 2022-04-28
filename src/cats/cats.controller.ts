@@ -8,7 +8,10 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { CreateCatDto, ListAllEntries, UpdateCatDto } from './create-cat.dto';
+import { CreateCatDto } from './create-cat.dto';
+import { ListAllEntries } from './list-cat.dto';
+import { UpdateCatDto } from './update-cat.dto';
+
 import { Response } from '@nestjs/common';
 
 @Controller('cats')
@@ -17,10 +20,12 @@ export class CatsController {
   create(@Body() createCatDto: CreateCatDto) {
     return 'This action adds a new cat';
   }
+
   @Get()
   findAll(@Query() query: ListAllEntries) {
     return `This action returns all cats (limit:${query.limit} items)`;
   }
+
   @Get('russian')
   findAll2(string): string {
     return `This action returns a russian cat`;
@@ -31,6 +36,7 @@ export class CatsController {
     console.log(id);
     return `This action returns a #${id} cat`;
   }
+
   @Put(':id')
   update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
     return `This action updates a #${id} cat`;
