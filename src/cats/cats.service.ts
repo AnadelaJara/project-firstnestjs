@@ -3,10 +3,22 @@ import { Cat } from './interfaces/cat.interface';
 
 @Injectable()
 export class CatsService {
-  getCats(): string {
-    return 'Estos son los gatetes';
+  private readonly cats: Cat[] = [
+    {
+      name: 'Copito',
+      age: 22,
+      breed: 'Russian',
+    },
+    {
+      name: 'Lolito',
+      age: 15,
+      breed: 'Egypt',
+    },
+  ];
+
+  getCats(): Cat[] {
+    return this.cats;
   }
-  // private readonly cats: Cat[] = [];
 
   // create(cat: Cat) {
   //   this.cats.push(cat);
@@ -16,3 +28,6 @@ export class CatsService {
   //   return this.cats;
   // }
 }
+// function getCats(): Cat {
+//   throw new Error('Function not implemented.');
+// }

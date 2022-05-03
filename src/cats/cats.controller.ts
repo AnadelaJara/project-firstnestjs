@@ -35,7 +35,7 @@ export class CatsController {
   // }
 
   @Get()
-  getAll(): string {
+  getAll() {
     return this.servicioDeGatetes.getCats();
   }
 
