@@ -40,10 +40,12 @@ export class CatsController {
   }
 
   @Post()
-  create(@Body() createCatDto: CreateCatDto) {
-    console.log(createCatDto);
+  // create(@Body() createNewCat: CreateCatDto) {
+  create(@Body() body) {
+    //console.log(createNewCat);
 
+    return `This is my fav cat named ${body.name}, is ${body.age} old and her breed is ${body.breed}`;
     //return 'This action adds a new cat';
-    return;
+    //return;
   }
 }

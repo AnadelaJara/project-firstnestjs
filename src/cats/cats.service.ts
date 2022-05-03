@@ -12,7 +12,7 @@ export class CatsService {
     {
       name: 'Lolito',
       age: 15,
-      breed: 'Egypt',
+      breed: 'Blonde',
     },
   ];
 
