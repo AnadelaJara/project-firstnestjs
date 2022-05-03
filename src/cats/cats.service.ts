@@ -3,13 +3,16 @@ import { Cat } from './interfaces/cat.interface';
 
 @Injectable()
 export class CatsService {
-  private readonly cats: Cat[] = [];
-
-  create(cat: Cat) {
-    this.cats.push(cat);
+  getCats(): string {
+    return 'Estos son los gatetes';
   }
+  // private readonly cats: Cat[] = [];
 
-  findAll(): Cat[] {
-    return this.cats;
-  }
+  // create(cat: Cat) {
+  //   this.cats.push(cat);
+  // }
+
+  // findAll(): Cat[] {
+  //   return this.cats;
+  // }
 }

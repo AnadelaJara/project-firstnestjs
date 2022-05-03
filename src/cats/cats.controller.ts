@@ -18,15 +18,32 @@ import { Cat } from './interfaces/cat.interface';
 
 @Controller('cats')
 export class CatsController {
-  constructor(private catsService: CatsService) {}
+  // catsService: CatsService;
+  // constructor(catsService) {
+  //   this.catsService = catsService;
+  // }
+  constructor(private servicioDeGatetes: CatsService) {}
 
-  @Post()
-  async create(@Body() createCatDto: CreateCatDto) {
-    this.catsService.create(createCatDto);
-  }
+  // @Post()
+  // async create(@Body() createCatDto: CreateCatDto) {
+  //   this.catsService.create(createCatDto);
+  // }
+
+  // @Get()
+  // async findAll(): Promise<Cat[]> {
+  //   return this.catsService.findAll();
+  // }
 
   @Get()
-  async findAll(): Promise<Cat[]> {
-    return this.catsService.findAll();
+  getAll(): string {
+    return this.servicioDeGatetes.getCats();
+  }
+
+  @Post()
+  create(@Body() createCatDto: CreateCatDto) {
+    console.log(createCatDto);
+
+    //return 'This action adds a new cat';
+    return;
   }
 }
