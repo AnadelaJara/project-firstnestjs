@@ -24,6 +24,8 @@ export class CatsController {
   // }
   constructor(private servicioDeGatetes: CatsService) {}
 
+  /// Protocolos HTTPS:
+
   @Get()
   getAll() {
     return this.servicioDeGatetes.getCats();
@@ -32,5 +34,11 @@ export class CatsController {
   @Post()
   create(@Body() newCat: CreateCatDto): void {
     return this.servicioDeGatetes.create(newCat);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateNewCat: CreateCatDto) {
+    //return `Actualiza el gato con id ${id}`;
+    return updateNewCat;
   }
 }
