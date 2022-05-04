@@ -26,19 +26,28 @@ export class CatsController {
 
   /// Protocolos HTTPS:
 
+  //Para tener todos los gatos
   @Get()
   getAll() {
     return this.servicioDeGatetes.getCats();
   }
 
+  //Para añadir un nuevo gato
   @Post()
   create(@Body() newCat: CreateCatDto): void {
     return this.servicioDeGatetes.create(newCat);
   }
 
+  //Para actualizar un gato ya existente
   @Put(':id')
   update(@Param('id') id: string, @Body() updateNewCat: CreateCatDto) {
-    //return `Actualiza el gato con id ${id}`;
+    //return `Actualizado el gato con id ${id}`;
     return updateNewCat;
+  }
+
+  //Para borrar un gato existente
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return `Borrado el gato con ${id}`;
   }
 }

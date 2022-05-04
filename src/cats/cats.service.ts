@@ -5,18 +5,18 @@ import { Cat } from './interfaces/cat.interface';
 @Injectable()
 export class CatsService {
   private readonly cats: Cat[] = [
-    {
-      id: 1,
-      name: 'Copito',
-      age: 22,
-      breed: 'Russian',
-    },
-    {
-      id: 2,
-      name: 'Lolito',
-      age: 15,
-      breed: 'Blonde',
-    },
+    // {
+    //   id: 1,
+    //   name: 'Copito',
+    //   age: 22,
+    //   breed: 'Russian',
+    // },
+    // {
+    //   id: 2,
+    //   name: 'Lolito',
+    //   age: 15,
+    //   breed: 'Blonde',
+    // },
   ];
 
   getCats(): Cat[] {
@@ -25,7 +25,6 @@ export class CatsService {
 
   create(cat: CreateCatDto) {
     /// Añadir id al parámetro cats inventado
-
     this.cats.push({
       id: this.cats.length + 1,
       ...cat,
