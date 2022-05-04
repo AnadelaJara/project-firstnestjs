@@ -1,15 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { CreateCatDto } from './create-cat.dto';
 import { Cat } from './interfaces/cat.interface';
 
 @Injectable()
 export class CatsService {
   private readonly cats: Cat[] = [
     {
+      id: 1,
       name: 'Copito',
       age: 22,
       breed: 'Russian',
     },
     {
+      id: 2,
       name: 'Lolito',
       age: 15,
       breed: 'Blonde',
@@ -20,14 +23,12 @@ export class CatsService {
     return this.cats;
   }
 
-  // create(cat: Cat) {
-  //   this.cats.push(cat);
-  // }
+  create(cat: CreateCatDto) {
+    /// Añadir id al parámetro cats inventado
 
-  // findAll(): Cat[] {
-  //   return this.cats;
-  // }
+    this.cats.push({
+      id: this.cats.length + 1,
+      ...cat,
+    });
+  }
 }
-// function getCats(): Cat {
-//   throw new Error('Function not implemented.');
-// }

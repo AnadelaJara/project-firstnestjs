@@ -24,28 +24,13 @@ export class CatsController {
   // }
   constructor(private servicioDeGatetes: CatsService) {}
 
-  // @Post()
-  // async create(@Body() createCatDto: CreateCatDto) {
-  //   this.catsService.create(createCatDto);
-  // }
-
-  // @Get()
-  // async findAll(): Promise<Cat[]> {
-  //   return this.catsService.findAll();
-  // }
-
   @Get()
   getAll() {
     return this.servicioDeGatetes.getCats();
   }
 
   @Post()
-  // create(@Body() createNewCat: CreateCatDto) {
-  create(@Body() body) {
-    //console.log(createNewCat);
-
-    return `This is my fav cat named ${body.name}, is ${body.age} old and her breed is ${body.breed}`;
-    //return 'This action adds a new cat';
-    //return;
+  create(@Body() newCat: CreateCatDto): void {
+    return this.servicioDeGatetes.create(newCat);
   }
 }
