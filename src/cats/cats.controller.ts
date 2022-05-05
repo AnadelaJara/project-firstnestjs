@@ -40,9 +40,8 @@ export class CatsController {
 
   //Para actualizar un gato ya existente
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateNewCat: CreateCatDto) {
-    //return `Actualizado el gato con id ${id}`;
-    return updateNewCat;
+  update(@Param('id') id: string, @Body() updateACat: UpdateCatDto) {
+    return this.servicioDeGatetes.update(parseInt(id), updateACat);
   }
 
   //Para borrar un gato existente
