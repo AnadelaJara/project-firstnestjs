@@ -48,6 +48,6 @@ export class CatsController {
   //Para borrar un gato existente
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `Borrado el gato con ${id}`;
+    return this.servicioDeGatetes.remove(parseInt(id));
   }
 }

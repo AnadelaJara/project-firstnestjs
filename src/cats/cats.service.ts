@@ -4,7 +4,7 @@ import { Cat } from './interfaces/cat.interface';
 
 @Injectable()
 export class CatsService {
-  private readonly cats: Cat[] = [
+  private cats: Cat[] = [
     // {
     //   id: 1,
     //   name: 'Copito',
@@ -29,5 +29,10 @@ export class CatsService {
       id: this.cats.length + 1,
       ...cat,
     });
+  }
+
+  remove(id: number) {
+    const catDeleted = this.cats.filter((cat) => cat.id !== id);
+    this.cats = catDeleted;
   }
 }
