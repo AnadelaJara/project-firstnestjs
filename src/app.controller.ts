@@ -9,4 +9,10 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  // @Get('/today')
+  // getToday(): string {
+  //   const date = new Date();
+  //   return date.getFullYear;
+  // }
 }

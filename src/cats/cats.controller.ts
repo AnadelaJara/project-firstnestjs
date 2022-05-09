@@ -13,37 +13,40 @@ import { ListAllEntries } from './list-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
 
 import { Response } from '@nestjs/common';
+import { CatsService } from './cats.service';
+import { Cat } from './interfaces/cat.interface';
 
 @Controller('cats')
 export class CatsController {
-  @Post()
-  create(@Body() createCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
-  }
+  // catsService: CatsService;
+  // constructor(catsService) {
+  //   this.catsService = catsService;
+  // }
+  constructor(private servicioDeGatetes: CatsService) {}
 
+  /// Protocolos HTTPS:
+
+  //Para tener todos los gatos
   @Get()
-  findAll(@Query() query: ListAllEntries) {
-    return `This action returns all cats (limit:${query.limit} items)`;
+  getAll() {
+    return this.servicioDeGatetes.getCats();
   }
 
-  @Get('russian')
-  findAll2(string): string {
-    return `This action returns a russian cat`;
+  //Para añadir un nuevo gato
+  @Post()
+  create(@Body() newCat: CreateCatDto): void {
+    return this.servicioDeGatetes.create(newCat);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string): string {
-    console.log(id);
-    return `This action returns a #${id} cat`;
-  }
-
+  //Para actualizar un gato ya existente
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
-    return `This action updates a #${id} cat`;
+  update(@Param('id') id: string, @Body() updateACat: UpdateCatDto) {
+    return this.servicioDeGatetes.update(parseInt(id), updateACat);
   }
 
+  //Para borrar un gato existente
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `This action removes a #${id} cat`;
+    return this.servicioDeGatetes.remove(parseInt(id));
   }
 }
