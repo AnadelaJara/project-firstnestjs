@@ -20,10 +20,13 @@ export class CatsService {
     },
   ];
 
-  getCats(): Cat[] {
+  // getCats(): Cat[] {
+  //   return this.cats;
+  // }
+
+  findAll(): Cat[] {
     return this.cats;
   }
-
   create(cat: CreateCatDto) {
     /// Añadir id al parámetro cats inventado
     this.cats.push({

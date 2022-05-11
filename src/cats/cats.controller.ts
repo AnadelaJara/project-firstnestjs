@@ -7,6 +7,8 @@ import {
   Put,
   Param,
   Delete,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
 import { ListAllEntries } from './list-cat.dto';
@@ -27,9 +29,16 @@ export class CatsController {
   /// Protocolos HTTPS:
 
   //Para tener todos los gatos
+  // @Get()
+  // getAll() {
+  //   return this.servicioDeGatetes.getCats();
+  // }
+
+  //Exceptions
   @Get()
-  getAll() {
-    return this.servicioDeGatetes.getCats();
+  async findAll() {
+    console.log('Meeeek!s');
+    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
   }
 
   //Para añadir un nuevo gato
