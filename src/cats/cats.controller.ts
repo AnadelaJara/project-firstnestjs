@@ -7,14 +7,13 @@ import {
   Param,
   Delete,
   ForbiddenException,
+  HttpException,
+  UseFilters,
 } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
-import { ListAllEntries } from './list-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
-
-import { Response } from '@nestjs/common';
 import { CatsService } from './cats.service';
-import { Cat } from './interfaces/cat.interface';
+import { HttpExceptionFilter } from '../http-exception.filter';
 
 @Controller('cats')
 export class CatsController {
@@ -32,8 +31,9 @@ export class CatsController {
     return this.servicioDeGatetes.getCats();
   }
 
-  //Exceptions
-  @Get('forbidden')
+  //Exceptionsfilters
+  @Get('error')
+  @UseFilters(new HttpExceptionFilter())
   async findAll() {
     throw new ForbiddenException();
   }
@@ -55,4 +55,7 @@ export class CatsController {
   remove(@Param('id') id: string) {
     return this.servicioDeGatetes.remove(parseInt(id));
   }
+}
+function Usefilters(arg0: HttpException) {
+  throw new Error('Function not implemented.');
 }
