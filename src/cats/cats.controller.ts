@@ -33,7 +33,7 @@ export class CatsController {
   }
 
   //Exceptions
-  @Get()
+  @Get('forbidden')
   async findAll() {
     throw new ForbiddenException();
   }

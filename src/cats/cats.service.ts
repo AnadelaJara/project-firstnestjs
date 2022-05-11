@@ -24,6 +24,7 @@ export class CatsService {
     return this.cats;
   }
 
+  //Exception filters
   findAll(): Cat[] {
     return this.cats;
   }
