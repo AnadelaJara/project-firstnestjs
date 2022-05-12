@@ -8,6 +8,7 @@ import {
   Delete,
   ForbiddenException,
   UseFilters,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
@@ -35,6 +36,11 @@ export class CatsController {
   @UseFilters(new HttpExceptionFilter())
   async findAll() {
     throw new ForbiddenException();
+  }
+
+  @Get(':id')
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.servicioDeGatetes.findOne();
   }
 
   //Para añadir un nuevo gato
