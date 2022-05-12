@@ -7,7 +7,6 @@ import {
   Param,
   Delete,
   ForbiddenException,
-  HttpException,
   UseFilters,
 } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
@@ -55,7 +54,4 @@ export class CatsController {
   remove(@Param('id') id: string) {
     return this.servicioDeGatetes.remove(parseInt(id));
   }
-}
-function Usefilters(arg0: HttpException) {
-  throw new Error('Function not implemented.');
 }
