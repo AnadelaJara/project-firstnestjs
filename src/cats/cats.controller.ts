@@ -7,16 +7,17 @@ import {
   Param,
   Delete,
   ForbiddenException,
-  HttpException,
   UseFilters,
 } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
 import { CatsService } from './cats.service';
 import { HttpExceptionFilter } from '../http-exception.filter';
+import { Roles } from 'src/roles.decorator';
 
 @Controller('cats')
 export class CatsController {
+  catsService: any;
   // catsService: CatsService;
   // constructor(catsService) {
   //   this.catsService = catsService;
@@ -55,7 +56,10 @@ export class CatsController {
   remove(@Param('id') id: string) {
     return this.servicioDeGatetes.remove(parseInt(id));
   }
-}
-function Usefilters(arg0: HttpException) {
-  throw new Error('Function not implemented.');
+  // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
+  @Post()
+  @Roles('admin')
+  async create2(@Body() createCatDtoForAdmin: CreateCatDto) {
+    this.catsService.create(createCatDtoForAdmin);
+  }
 }

@@ -49,4 +49,11 @@ export class CatsService {
     const catDeleted = this.cats.filter((cat) => cat.id !== id);
     this.cats = catDeleted;
   }
+  create2(catForAdmin: CreateCatDto) {
+    /// Añadir id al parámetro cats inventado
+    this.cats.push({
+      id: this.cats.length + 1,
+      ...catForAdmin,
+    });
+  }
 }
