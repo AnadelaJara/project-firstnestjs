@@ -7,8 +7,9 @@ import {
   Param,
   Delete,
   ForbiddenException,
-  HttpException,
   UseFilters,
+  ParseIntPipe,
+  HttpStatus,
 } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
@@ -38,6 +39,17 @@ export class CatsController {
     throw new ForbiddenException();
   }
 
+  @Get(':id')
+  async findOne(
+    @Param(
+      'id',
+      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
+    id: number,
+  ) {
+    return this.servicioDeGatetes.findOne();
+  }
+
   //Para añadir un nuevo gato
   @Post()
   create(@Body() newCat: CreateCatDto): void {
@@ -55,7 +67,4 @@ export class CatsController {
   remove(@Param('id') id: string) {
     return this.servicioDeGatetes.remove(parseInt(id));
   }
-}
-function Usefilters(arg0: HttpException) {
-  throw new Error('Function not implemented.');
 }

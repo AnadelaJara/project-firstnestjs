@@ -29,6 +29,10 @@ export class CatsService {
     return this.cats;
   }
 
+  findOne(): Cat[] {
+    return this.cats;
+  }
+
   create(cat: CreateCatDto) {
     /// Añadir id al parámetro cats inventado
     this.cats.push({
