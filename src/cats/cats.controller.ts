@@ -8,16 +8,17 @@ import {
   Delete,
   ForbiddenException,
   UseFilters,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
 import { CatsService } from './cats.service';
 import { HttpExceptionFilter } from '../http-exception.filter';
 import { Roles } from 'src/roles.decorator';
+import { RolesGuard } from 'src/roles.guard';
 
 @Controller('cats')
 export class CatsController {
-  catsService: any;
   // catsService: CatsService;
   // constructor(catsService) {
   //   this.catsService = catsService;
@@ -56,10 +57,10 @@ export class CatsController {
   remove(@Param('id') id: string) {
     return this.servicioDeGatetes.remove(parseInt(id));
   }
-  // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
-  @Post()
-  @Roles('admin')
+
+  @Post('superuser')
+  @UseGuards(RolesGuard)
   async create2(@Body() createCatDtoForAdmin: CreateCatDto) {
-    this.catsService.create(createCatDtoForAdmin);
+    this.servicioDeGatetes.create(createCatDtoForAdmin);
   }
 }
