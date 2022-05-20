@@ -8,6 +8,7 @@ import {
   Delete,
   ForbiddenException,
   UseFilters,
+  UseGuards,
   ParseIntPipe,
   HttpStatus,
 } from '@nestjs/common';
@@ -15,6 +16,7 @@ import { CreateCatDto } from './create-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
 import { CatsService } from './cats.service';
 import { HttpExceptionFilter } from '../http-exception.filter';
+import { RolesGuard } from 'src/roles.guard';
 
 @Controller('cats')
 export class CatsController {
@@ -66,5 +68,11 @@ export class CatsController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.servicioDeGatetes.remove(parseInt(id));
+  }
+
+  @Post('superuser')
+  @UseGuards(RolesGuard)
+  async create2(@Body() createCatDtoForAdmin: CreateCatDto) {
+    this.servicioDeGatetes.create(createCatDtoForAdmin);
   }
 }
