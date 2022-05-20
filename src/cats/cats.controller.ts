@@ -9,12 +9,13 @@ import {
   ForbiddenException,
   UseFilters,
   UseGuards,
+  ParseIntPipe,
+  HttpStatus,
 } from '@nestjs/common';
 import { CreateCatDto } from './create-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
 import { CatsService } from './cats.service';
 import { HttpExceptionFilter } from '../http-exception.filter';
-import { Roles } from 'src/roles.decorator';
 import { RolesGuard } from 'src/roles.guard';
 
 @Controller('cats')
@@ -38,6 +39,17 @@ export class CatsController {
   @UseFilters(new HttpExceptionFilter())
   async findAll() {
     throw new ForbiddenException();
+  }
+
+  @Get(':id')
+  async findOne(
+    @Param(
+      'id',
+      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
+    id: number,
+  ) {
+    return this.servicioDeGatetes.findOne();
   }
 
   //Para añadir un nuevo gato
