@@ -1,9 +1,8 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { catchError, map } from 'rxjs/operators';
-import { AxiosResponse } from 'axios';
+import { Injectable } from '@nestjs/common';
 import { IGetAllDogs } from './dogs.interfaces';
+import axios from 'axios';
 
-const axios = require('axios').default;
+//const axios = require('axios').default;
 
 @Injectable()
 export class DogsService {}
