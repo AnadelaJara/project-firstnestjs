@@ -18,7 +18,6 @@ export class CreateCatDto {
   breed: string;
 }
 
-/////
 export class Cat {
   @ApiProperty()
   id: number;

@@ -22,12 +22,6 @@ import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 @ApiTags('cats')
 @Controller('cats')
 export class CatsController {
-  catsService: any;
-  // catsService: CatsService;
-  // constructor(catsService) {
-  //   this.catsService = catsService;
-  // }
-  //
   constructor(private servicioDeGatetes: CatsService) {}
   @Post()
   @ApiCreatedResponse({
@@ -76,15 +70,16 @@ export class CatsController {
     return this.servicioDeGatetes.remove(parseInt(id));
   }
 
-  //   @Post('superuser')
-  //   @UseGuards(RolesGuard)
-  //   async create2(@Body() createCatDtoForAdmin: CreateCatDto) {
-  //     this.servicioDeGatetes.create(createCatDtoForAdmin);
-  //   }
+  @Post('superuser')
+  @UseGuards(RolesGuard)
+  async create2(@Body() createCatDtoForAdmin: CreateCatDto) {
+    this.servicioDeGatetes.create(createCatDtoForAdmin);
+  }
 
-  //Para añadir un nuevo gato
-  // @Post()
-  // create(@Body() newCat: CreateCatDto): void {
-  //   return this.servicioDeGatetes.create(newCat);
+  // Para añadir un nuevo gato
+  //   @Post()
+  //   create(@Body() newCat: CreateCatDto): void {
+  //     return this.servicioDeGatetes.create(newCat);
+  //   }
   // }
 }
