@@ -11,5 +11,5 @@ export async function callToApi() {
   const apiAwait = await axios.get('https://dog.ceo/api/breeds/list/all');
   console.log(apiAwait.data);
   const response: IGetAllDogs = apiAwait.data;
-  return response.message.malamute;
+  return response;
 }
