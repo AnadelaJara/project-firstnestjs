@@ -12,19 +12,31 @@ import {
   ParseIntPipe,
   HttpStatus,
 } from '@nestjs/common';
-import { CreateCatDto } from './create-cat.dto';
+import { Cat, CreateCatDto } from './create-cat.dto';
 import { UpdateCatDto } from './update-cat.dto';
 import { CatsService } from './cats.service';
 import { HttpExceptionFilter } from '../http-exception.filter';
 import { RolesGuard } from 'src/roles.guard';
+import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('cats')
 @Controller('cats')
 export class CatsController {
+  catsService: any;
   // catsService: CatsService;
   // constructor(catsService) {
   //   this.catsService = catsService;
   // }
+  //
   constructor(private servicioDeGatetes: CatsService) {}
+  @Post()
+  @ApiCreatedResponse({
+    description: 'The record has been successfully created.',
+    type: Cat,
+  })
+  async create(@Body() nuevoBody: CreateCatDto): Promise<void> {
+    return this.servicioDeGatetes.create(nuevoBody);
+  }
 
   /// Protocolos HTTPS:
 
@@ -52,12 +64,6 @@ export class CatsController {
     return this.servicioDeGatetes.findOne();
   }
 
-  //Para añadir un nuevo gato
-  @Post()
-  create(@Body() newCat: CreateCatDto): void {
-    return this.servicioDeGatetes.create(newCat);
-  }
-
   //Para actualizar un gato ya existente
   @Put(':id')
   update(@Param('id') id: string, @Body() updateACat: UpdateCatDto) {
@@ -70,9 +76,15 @@ export class CatsController {
     return this.servicioDeGatetes.remove(parseInt(id));
   }
 
-  @Post('superuser')
-  @UseGuards(RolesGuard)
-  async create2(@Body() createCatDtoForAdmin: CreateCatDto) {
-    this.servicioDeGatetes.create(createCatDtoForAdmin);
-  }
+  //   @Post('superuser')
+  //   @UseGuards(RolesGuard)
+  //   async create2(@Body() createCatDtoForAdmin: CreateCatDto) {
+  //     this.servicioDeGatetes.create(createCatDtoForAdmin);
+  //   }
+
+  //Para añadir un nuevo gato
+  // @Post()
+  // create(@Body() newCat: CreateCatDto): void {
+  //   return this.servicioDeGatetes.create(newCat);
+  // }
 }
