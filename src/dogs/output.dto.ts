@@ -6,3 +6,17 @@ export class OutputDto {
   breed: [];
   status: string;
 }
+
+export class Dog {
+  @ApiProperty()
+  id: number;
+
+  @ApiProperty()
+  name: string;
+
+  @ApiProperty()
+  age: number;
+
+  @ApiProperty()
+  breed: string;
+}
