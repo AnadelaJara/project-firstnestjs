@@ -7,10 +7,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Dogs example')
+    .setDescription('The dogs API description')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('cats', 'dogs')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
