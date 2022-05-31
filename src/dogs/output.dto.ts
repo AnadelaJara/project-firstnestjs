@@ -1,17 +1,17 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Dog } from './dog';
 
 export class OutputDto {
   @ApiProperty()
-  message: MessageOutputDto;
+  id: number;
+
+  @ApiProperty()
+  breed: string[];
+
+  @ApiProperty()
+  name: string;
 }
 
-class MessageOutputDto {
-  affenpinscher: any[];
-  african: any[];
-  airedale: any[];
-  akita: any[];
-  appenzeller: any[];
-  australian: string[];
-  basenji: any[];
-  beagle: any[];
+export function toOutputDto(dogs: Dog[]): OutputDto[] {
+  return;
 }

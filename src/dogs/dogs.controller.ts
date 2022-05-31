@@ -1,16 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { IGetAllDogs } from './dogs.interfaces';
-import { DogsService } from './dogs.service';
+import { GetAllDogs } from './get.all.dogs';
 import { OutputDto } from './output.dto';
 
 @Controller('dogs')
 @ApiTags('dogs')
 export class DogsController {
-  constructor(private servicioDePerretes: DogsService) {}
+  constructor(private useCase: GetAllDogs) {}
 
   @Get()
-  async getDogs(): Promise<OutputDto> {
-    return this.servicioDePerretes.callToApi();
+  async getDogs(): Promise<OutputDto[]> {
+    return this.useCase.call();
   }
 }

@@ -2,7 +2,7 @@ export interface IGetAllDogs {
   message: IMessageGetAllDogs;
 }
 
-interface IMessageGetAllDogs {
+export interface IMessageGetAllDogs {
   affenpinscher: any[];
   african: any[];
   airedale: any[];
