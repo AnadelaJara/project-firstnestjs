@@ -3,8 +3,10 @@ import axios from 'axios';
 
 @Injectable()
 export class DogsClient {
-  async get() {
-    const apiAwait = await axios.get('https://dog.ceo/api/breeds/list/all');
-    return apiAwait;
+  async get(url) {
+    const response = await axios.get('https://dog.ceo/api/' + url);
+    return response;
   }
 }
+
+//https://dog.ceo/api/breed/${breed}/images
