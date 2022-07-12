@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { DogsClient } from './dogs.client';
-import { DogsController } from './dogs.controller';
-import { DogsService } from './dogs.service';
-import { GetAllDogs } from './get.all.dogs';
-import { GetBreedImage } from './get.image.dog';
+import { DogsClient } from './services/dogs.client';
+import { DogsController } from './controllers/dogs.controller';
+import { DogsService } from './services/dogs.service';
+import { GetAllDogs } from './core/use_cases/get.all.dogs';
+import { GetBreedImage } from './core/use_cases/get.image.dog';
 
 @Module({
   controllers: [DogsController],

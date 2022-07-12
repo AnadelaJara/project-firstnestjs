@@ -1,6 +1,6 @@
-import { Dog } from './dog';
-import { BreedImages } from './breed.images';
-import { IGetAllDogs } from './dogs.interfaces';
+import { Dog } from '../core/entities/dog';
+import { BreedImages } from '../core/entities/breed.images';
+import { IGetAllDogs } from '../core/interfaces/dogs.interfaces';
 
 export function fromDogsResponseToEntity(dogResponse: IGetAllDogs): Dog[] {
   const keys = Object.keys(dogResponse.message);

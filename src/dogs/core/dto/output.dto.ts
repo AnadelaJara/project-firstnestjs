@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Dog } from './dog';
+import { Dog } from '../entities/dog';
 
 export class OutputDto {
   @ApiProperty()

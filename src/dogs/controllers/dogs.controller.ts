@@ -1,8 +1,8 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { GetAllDogs } from './get.all.dogs';
-import { GetBreedImage } from './get.image.dog';
-import { OutputDto } from './output.dto';
+import { GetAllDogs } from '../core/use_cases/get.all.dogs';
+import { GetBreedImage } from '../core/use_cases/get.image.dog';
+import { OutputDto } from '../core/dto/output.dto';
 
 @Controller('dogs')
 @ApiTags('dogs')

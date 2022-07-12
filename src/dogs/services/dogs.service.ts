@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { IGetAllDogs } from './dogs.interfaces';
-import { OutputDto } from './output.dto';
+import { IGetAllDogs } from '../core/interfaces/dogs.interfaces';
+import { OutputDto } from '../core/dto/output.dto';
 import { DogsClient } from './dogs.client';
 import {
   fromBreedsImageResponseToEntity,
   fromDogsResponseToEntity,
 } from './dogs.adapter';
-import { Dog } from './dog';
+import { Dog } from '../core/entities/dog';
 
 @Injectable()
 export class DogsService {

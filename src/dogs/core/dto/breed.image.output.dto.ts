@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { BreedImages } from './breed.images';
+import { BreedImages } from '../entities/breed.images';
 
 export class BreedImagesOutputDto {
   @ApiProperty()
