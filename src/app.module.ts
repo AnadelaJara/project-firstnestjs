@@ -8,16 +8,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     CatsModule,
     DogsModule,
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'testa',
-      entities: [],
-      synchronize: true,
-    }),
+    //TypeOrmModule.forRoot({
+    //type: 'mysql',
+    //host: 'localhost',
+    //port: 3306,
+    //username: 'root',
+    //password: 'root',
+    //database: 'testa',
+    //entities: [],
+    //synchronize: true,
+    //}),
   ],
 })
 export class AppModule implements NestModule {

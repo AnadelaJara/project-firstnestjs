@@ -6,18 +6,27 @@ export class BreedImagesOutputDto {
   raza: string;
 
   @ApiProperty()
-  imagenes: string[];
+  //imagenes: string[];
+  imagenRandom: string;
 
-  @ApiProperty()
-  imagesAmount: number;
+  //@ApiProperty()
+  //imagesAmount: number;
 }
 export function toBreedImagesOutputDto(
   breedImages: BreedImages,
 ): BreedImagesOutputDto {
+  function randomIntFromInterval(min, max) {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  const rndInt = randomIntFromInterval(0, 100);
+  console.log(rndInt);
   const breedImagesOutputDto: BreedImagesOutputDto = {
     raza: breedImages.breed,
-    imagenes: breedImages.images,
-    imagesAmount: breedImages.images.length,
+    imagenRandom: breedImages.images[rndInt],
+    //imagenes: breedImages.images,
+    //imagesAmount: breedImages.images.length,
   };
   return breedImagesOutputDto;
 }
