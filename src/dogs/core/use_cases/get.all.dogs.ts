@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { DogsService } from '../../services/dogs.service';
+import { DogsService } from '../../services/dogs_services/dogs.service';
 import { OutputDto, toOutputDto } from '../dto/output.dto';
 
 @Injectable()
